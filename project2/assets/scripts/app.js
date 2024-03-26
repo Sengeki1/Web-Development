@@ -4,7 +4,8 @@ let valorActualVidaM = maxVida
 let valorActualVidaP = maxVida
 let healVida = 10
 let strongAttack = 20
-let lifeRestored = 0;
+
+let data = []
 
 const ataque = () => {
 	const perda = dealMonsterDamage(VALOR_ATAQUE)
@@ -13,54 +14,88 @@ const ataque = () => {
 	const perdaPlayer = dealPlayerDamage(VALOR_ATAQUE)
 	valorActualVidaP -= perdaPlayer
 
+	data.push({
+			perdaMonstro: perda,
+			perdaPlayer: perdaPlayer 
+		})
+
 	if (valorActualVidaM < 0 && valorActualVidaP > 0) {
 		alert('venceu!')
+		adjustHealthBars(maxVida)
+		valorActualVidaM = maxVida
+		valorActualVidaP = maxVida
 	} else if (valorActualVidaP <= 0 && valorActualVidaM > 0) {
 		alert('perdeu!')
+		adjustHealthBars(maxVida)
+		valorActualVidaM = maxVida
+		valorActualVidaP = maxVida	
+
 	} else if (valorActualVidaP <= 0 && valorActualVidaM <= 0) {
 		alert('impate!')
+		adjustHealthBars(maxVida)
+		valorActualVidaM = maxVida
+		valorActualVidaP = maxVida	
 	}
 }
 
 const heal = () => {
 	const choose = Math.floor(Math.random() * 2)
-	if (choose === 1) {
+	if (choose === 1 && valorActualVidaP <= maxVida) {
 		increasePlayerHealth(healVida)
-		valorActualVidaP += heal
-		console.log(valorActualVidaP)
-	} else {
+		valorActualVidaP += healVida
+	} else if (choose === 0 && valorActualVidaM <= maxVida) {
 		increaseMonsterHealth(healVida)
-		valorActualVidaM += heal
+		valorActualVidaM += healVida
 	}
+
+	data = data.map(item => {
+		return {
+			...item, 
+			healMonstro: healVida,
+			perdaPlayer: healVida 
+		}
+	})
+
+}
+
+const strongAttackk = () => {	
+	const perda = dealMonsterDamage(strongAttack)
+	valorActualVidaM -= perda
+		
+	const perdaPlayer = dealPlayerDamage(strongAttack)
+	valorActualVidaP -= perdaPlayer
+
+	data = data.map(item => {
+		return {
+			...item, 
+			perdaForteMonstro: perda,
+			perdaForteePlayer: perdaPlayer 
+		}
+	})
 
 	if (valorActualVidaM < 0 && valorActualVidaP > 0) {
 		alert('venceu!')
+		adjustHealthBars(maxVida)
+		valorActualVidaM = maxVida
+		valorActualVidaP = maxVida
 	} else if (valorActualVidaP <= 0 && valorActualVidaM > 0) {
 		alert('perdeu!')
+		adjustHealthBars(maxVida)
+		valorActualVidaM = maxVida
+		valorActualVidaP = maxVida
 	} else if (valorActualVidaP <= 0 && valorActualVidaM <= 0) {
 		alert('impate!')
+		adjustHealthBars(maxVida)
+		valorActualVidaM = maxVida
+		valorActualVidaP = maxVida
 	}
 }
 
-const strongAttackk = () => {
-	const choose = Math.floor(Math.random() * 2)
-	if (choose === 1) {
-		const perda = dealMonsterDamage(strongAttack)
-		valorActualVidaM -= perda
-	} else {
-		const perdaPlayer = dealPlayerDamage(strongAttack)
-		valorActualVidaP -= perdaPlayer
-	}
-
-	if (valorActualVidaM < 0 && valorActualVidaP > 0) {
-		alert('venceu!')
-	} else if (valorActualVidaP <= 0 && valorActualVidaM > 0) {
-		alert('perdeu!')
-	} else if (valorActualVidaP <= 0 && valorActualVidaM <= 0) {
-		alert('impate!')
-	}
+const showLog = () => {
+	console.log(data)
 }
 
 attackBtn.addEventListener('click', ataque)
 healBtn.addEventListener('click', heal)
 strongAttackBtn.addEventListener('click', strongAttackk)
+logBtn.addEventListener('click', showLog)
