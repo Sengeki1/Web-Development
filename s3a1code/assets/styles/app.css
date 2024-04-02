@@ -205,12 +205,22 @@ input:focus {
   text-align: center;
 }
 
-#movie-list {
+#movie-list-child {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
   list-style: none;
   width: 40rem;
   max-width: 90%;
   margin: 1rem auto;
   padding: 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+#movie-list-child > img {
+  width: 200px;
 }
 
 #backdrop {
