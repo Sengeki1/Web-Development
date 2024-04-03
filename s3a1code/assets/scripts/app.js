@@ -24,25 +24,26 @@ const cancelMovie = () => {
 }
 
 const updateList = () => {
-	
-	if (filmes.length === 0) {
-		msgText.style.display = 'block'
-	} else {
-		msgText.style.display = 'none'
-	}
-	
-	const list = filmes.map(item => {
-		return `
-		<ul id='movie-list-child'>
-			<img src='${item.image}'>
-			<li>Name: ${item.title}</li>
-			<li>Classification: ${item.classification}</li>
-		</ul>
-	`
-	})
-	
-	listMovies.innerHTML = list
 
+    if (filmes.length === 0) {
+        msgText.style.display = 'block'
+    } else {
+        msgText.style.display = 'none'
+    }
+    
+    const listItems = filmes.map(item => {
+        return `
+        <div id="movie-item">
+            <img src='${item.image}'>
+            <div id="movie-details">
+                <h3>${item.title}</h3>
+                <p>${item.classification} / 4</p>
+            </div>
+        </div>
+        `
+    });
+    
+    listMovies.innerHTML = listItems.join('')
 }
 
 const btnConfirmAddHandler = () => {

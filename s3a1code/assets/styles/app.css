@@ -205,22 +205,48 @@ input:focus {
   text-align: center;
 }
 
-#movie-list-child {
+#movie-list {
   display: flex;
-  gap: 10px;
   flex-direction: column;
-  list-style: none;
-  width: 40rem;
   max-width: 90%;
   margin: 1rem auto;
   padding: 0;
-  border: 1px solid black;
+  width: 40rem;
   border-radius: 5px;
   font-size: 20px;
 }
 
-#movie-list-child > img {
+#movie-item {
+  display: flex;
+  align-items: flex-start;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+
+#movie-item img {
   width: 200px;
+}
+
+#movie-details {
+  display: flex;
+  flex-direction: column;
+}
+
+#movie-details h3 {
+  width: 30%;
+  margin-bottom: 0px;
+  margin-left: 300px;
+}
+
+#movie-details p {
+  margin-left: 320px;
+  border: 1px solid orange;
+  background-color: orange;
+  border-radius: 15px;
+  color: black;
+  width: 20%;
+  text-align: center;
 }
 
 #backdrop {
