@@ -9,4 +9,6 @@ const server = http.createServer( // returns a new instance of a server
     }
 )
 
-server.listen(port, hostname)
+server.listen(port, hostname, () => {  // listen for a request 
+    console.log(`Servidor a rodar em http://${hostname}:${port}/`)
+})
