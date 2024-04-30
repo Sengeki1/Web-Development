@@ -1,0 +1,19 @@
+<%- include('head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <%- include('includes/naviation.ejs') %>
+
+    <main>
+        <form class="product-form" action="/adming/add-produto" method="POST">
+            <div class="form-control">
+                <label>Nome</label>
+                <input type="text" name="nome">
+            </div>
+            <button class="btn" type="submit">Novo Produto</button>
+        </form>
+    </main>
+</body>
+<%- include('end.ejs') %>
+

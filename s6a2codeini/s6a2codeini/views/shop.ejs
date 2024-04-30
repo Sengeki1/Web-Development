@@ -1,12 +1,31 @@
-<%= include('head.ejs') %>
+<%- include('head.ejs') %>
 <link rel="stylesheet" href="/css/product.css">
 </head>
 
 <body>
     <main>
-        <div class="grid">
-            
-        </div>
+        <% if (produtos.length > 0) { %>
+            <div class="grid">
+                <% for (let produto of produtos) { %>
+                    <article>
+                        <header>
+                            <h1><%= produto.nome %></h1>
+                        </header>
+                        <div>
+                            <img src="" alt="teste">
+                        </div>
+                        <div>   
+                            
+                        </div>
+                        <div>
+
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>Nao a produtos!</h1>
+        <% } %>
     </main>
 </body>
 
