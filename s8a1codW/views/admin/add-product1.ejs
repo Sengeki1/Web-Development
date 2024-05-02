@@ -9,8 +9,20 @@
     <main>
         <form class="product-form" action="/admin/add-product" method="POST">
             <div class="form-control">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+            </div>
+            <div class="form-control">
+                <label for="imageURL">URL da image</label>
+                <input type="text" name="imageURL" id="imageURL">
+            </div>
+            <div class="form-control">
+                <label for="preco">Preco</label>
+                <input type="text" name="preco" id="preco">
+            </div>
+            <div class="form-control">
+                <label for="description">Descricao</label>
+                <input type="text" name="description" id="description">
             </div>
 
             <button class="btn" type="submit">Salvar</button>

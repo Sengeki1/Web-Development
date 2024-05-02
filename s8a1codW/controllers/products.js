@@ -13,7 +13,7 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req,res,next) => {
-  const produto = new Produto(req.body.title);
+  const produto = new Produto(req.body.nome, req.body.imageURL, req.body.description, req.body.preco);
   produto.save();
   res.redirect('/'); 
 };
