@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="./style.css" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/4e4c23d5e2.js" crossorigin="anonymous"></script>
+    <title>Sign Up Page</title>
+    <script src="./app.js"></script>
+  </head>
+  <body>
+    <section class="overlay">
+      <div class="header">
+        <h1>Sign In</h1>
+        <p>Login an account:</p>
+      </div>
+      <form id="login" action="/loginUser" method="POST">
+        <br>
+        <label for="email"></label>
+        <i class="fa-solid fa-envelope"></i>
+        <input id="email" name="email" type="email" placeholder="E-mail">
+        <br>
+        <label for="pw"></label>
+        <i class="fa-solid fa-lock"></i>
+        <input id="pw" name="pw" type="password" placeholder="Password">
+        <br>
+        <br>
+        <input class='button' type="submit" value="Login">
+      </form> 
+      <div class="sign-up">
+        <p>
+          Don't have an account? <a href="../Register/index.ejs">Sign Up</a>
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
