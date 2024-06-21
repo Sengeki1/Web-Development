@@ -6,6 +6,8 @@ const path = require('path');
 const logger = require('morgan');
 
 const envs = require('./util/config');
+const {superAdmin} = require('./seeders/admin');
+superAdmin();
 
 const adminRoutes = require('./routes/admin');
 const userRoutes = require('./routes/user');
@@ -26,7 +28,10 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.MONGODB_URL,
+  credentials: true,
+}));
 app.use(cookieParser());
 app.use(logger('dev'))
 
@@ -50,9 +55,9 @@ app.use((req, res, next) => {
     });
 });
 
+app.use(userRoutes);
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
-app.use(userRoutes);
 
 app.use(errorController.getError404);
 

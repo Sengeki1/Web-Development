@@ -14,9 +14,9 @@ router.get('/products/:productId', cors(), auth, shopController.getProduct);
 
 router.get('/cart', cors(), auth, shopController.getCart);
 
-router.post('/cart', shopController.postCart);
+router.post('/cart', cors(), auth, shopController.postCart);
 
-router.post('/cart-delete-item', shopController.postCartDeleteProduct);
+router.post('/cart-delete-item', cors(), auth, shopController.postCartDeleteProduct);
 
 router.get('/orders', cors(), auth, shopController.getOrders);
 
